@@ -74,4 +74,9 @@ public class SortsTests {
     public void testQuickSort() {
         testSort(Sorts::quickSort);
     }
+
+    @Test
+    public void testHeapSort() {
+        testSort(Sorts::heapSort);
+    }
 }
