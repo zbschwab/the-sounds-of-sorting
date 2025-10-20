@@ -15,16 +15,19 @@ public class CopyEvent<T> implements SortEvent<T> {
         this.value = value;
     }
 
+    @Override
     public void apply(T[] arr) {
         arr[idx] = value;
     }
 
+    @Override
     public List<Integer> getAffectedIndices() {
         List<Integer> lst = new ArrayList<>();
         lst.add(idx);
         return lst;
     }
 
+    @Override
     public boolean isEmphasized() {
         return true;
     }

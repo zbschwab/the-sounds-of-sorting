@@ -14,12 +14,14 @@ public class SwapEvent<T> implements SortEvent<T> {
         this.j = j;
     }
 
+    @Override
     public void apply(T[] arr) {
         T temp = arr[j];
         arr[j] = arr[i];
         arr[i] = temp;
     }
 
+    @Override
     public List<Integer> getAffectedIndices() {
         List<Integer> lst = new ArrayList<>();
         lst.add(i);
@@ -27,6 +29,7 @@ public class SwapEvent<T> implements SortEvent<T> {
         return lst;
     }
 
+    @Override
     public boolean isEmphasized() {
         return true;
     }
