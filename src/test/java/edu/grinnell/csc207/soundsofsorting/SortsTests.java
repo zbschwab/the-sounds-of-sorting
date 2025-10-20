@@ -1,11 +1,13 @@
 package edu.grinnell.csc207.soundsofsorting;
 
 import java.util.Arrays;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
+import edu.grinnell.csc207.soundsofsorting.sortevents.SortEvent;
 import edu.grinnell.csc207.soundsofsorting.sorts.Sorts;
 
 public class SortsTests {
@@ -41,10 +43,13 @@ public class SortsTests {
         };
     }
 
-    public void testSort(Consumer<Integer[]> func) {
+    public void testSort(Function<Integer[], List<SortEvent<Integer>>> func) {
         for (Integer[] arr : makeTestArray()) {
             Integer[] testArr = Arrays.copyOf(arr, arr.length);
-            func.accept(testArr);
+            List<SortEvent<Integer>> events = func.apply(testArr);
+            Integer[] eventsArr = Arrays.copyOf(arr, arr.length);
+            Sorts.eventSort(eventsArr, events);
+            //System.err.println(Arrays.toString(testArr));
             assertTrue(sorted(testArr),
                 "Failed to sort: " + Arrays.toString(arr));
         }
