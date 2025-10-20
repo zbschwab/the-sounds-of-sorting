@@ -1,6 +1,6 @@
 package edu.grinnell.csc207.soundsofsorting.sortevents;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +20,10 @@ public class CompareEvent<T> implements SortEvent<T> {
 
     @Override
     public List<Integer> getAffectedIndices() {
-        return Arrays.asList(i, j);
+        List<Integer> lst = new ArrayList<>();
+        lst.add(i);
+        lst.add(j);
+        return lst;
     }
 
     @Override
