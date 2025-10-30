@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.soundsofsorting;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -11,6 +12,12 @@ import javax.swing.JPanel;
 public class ArrayPanel extends JPanel {
     @SuppressWarnings("unused")
     private NoteIndices notes;
+
+    Color storm_blue = new Color(39, 86, 107);
+    Color jade_green = new Color(38, 113, 88);
+    Color midnight_blue = new Color(46, 67, 114);
+    Color goldenrod = new Color(170, 145, 57);
+    Color[] color_arr = {storm_blue, jade_green, storm_blue, midnight_blue};
 
     /**
      * Create a new <code>ArrayPanel</code> with the given notes and dimensions.
@@ -32,20 +39,13 @@ public class ArrayPanel extends JPanel {
         int y_scale = getHeight() / 12;
 
         for (int i = 0; i < sz; i++) {
-            g.drawRect(i*bar_width, y_max-this.notes.getNotes()[i]*y_scale, (i+1)*bar_width, y_max);
+            int barHeight = this.notes.getNotes()[i] * y_scale;
+            if (notes.isHighlighted(i)) {
+                g.setColor(goldenrod);
+            } else {
+                g.setColor(color_arr[i%color_arr.length]);
+            }
+            g.fillRect(i * bar_width, y_max - barHeight, bar_width - 1, barHeight);
         }
-        // y = 12
-        // int arr = import java.util.stream.max();
-        //(this.notes.getNotes()).max(Integer::compare);
-        //int arr_max = (int)java.util.Collections.max(this.notes.getNotes());
-
-        // int max = max(this.notes.getNotes());
-        // int max = 30;
-        // int xscale = getWidth() / sz;
-        // int yscale = getHeight() / max;
-        // for (int i = 0; i < sz; i++) {
-        //     // how do i get sort alg results height?
-        //     g.drawRect(i * xscale, getHeight(), (i + 1) * xscale, getHeight() - this.notes);
-        // }
     }
 }
