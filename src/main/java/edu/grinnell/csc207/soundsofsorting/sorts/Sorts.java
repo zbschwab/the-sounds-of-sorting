@@ -273,7 +273,7 @@ public class Sorts {
         List<SortEvent<T>> events = new ArrayList<>();
 
         int l_child = 2 * parent + 1;
-        int r_child = 2 * parent +2;
+        int r_child = 2 * parent + 2;
         int max = parent;
 
         if ((l_child < len) && (arr[l_child].compareTo(arr[max]) > 0)) {
