@@ -32,7 +32,7 @@ public class NoteIndices {
         }
 
         // shuffle arr in place with durstenfeld's fisher yates algorithm
-        for (int i = 6; i > 0; i--) {
+        for (int i = n-1; i > 0; i--) {
             Random rand = new Random();
             int j = rand.nextInt(i+1);
             Integer temp = this.indices[i];
