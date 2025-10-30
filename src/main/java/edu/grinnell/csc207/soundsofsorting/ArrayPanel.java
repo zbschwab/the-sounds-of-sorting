@@ -34,6 +34,11 @@ public class ArrayPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         int sz = this.notes.getNotes().length;
+        if (sz < 1) {
+            System.err.println("sz < 1");
+            return;
+        }
+
         int y_max = getHeight();
         int bar_width = y_max / sz;
         int y_scale = getHeight() / 12;

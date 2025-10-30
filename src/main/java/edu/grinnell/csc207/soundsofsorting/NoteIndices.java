@@ -27,18 +27,30 @@ public class NoteIndices {
      * @param n the size of the scale object that these indices map into
      */
     public void initializeAndShuffle(int n) {
-        for (int i = 0; i < n; i++) { 
+        this.indices = new Integer[n];
+        this.highlighted = new boolean[n];
+
+        for (int i = 0; i < this.indices.length; i++) { 
             this.indices[i] = i;
         }
 
+        System.out.println("indices length: " + this.indices.length);
+        System.out.println("indices: " + Arrays.toString(this.indices));
+        
+
         // shuffle arr in place with durstenfeld's fisher yates algorithm
-        for (int i = n-1; i > 0; i--) {
-            Random rand = new Random();
+        Random rand = new Random();
+
+        for (int i = this.indices.length-1; i > 0; i--) {
             int j = rand.nextInt(i+1);
             Integer temp = this.indices[i];
             this.indices[i] = this.indices[j];
             this.indices[j] = temp;
         }
+
+        System.out.println("indices length: " + this.indices.length);
+        System.out.println("indices: " + Arrays.toString(this.indices));
+        
         
         Arrays.fill(this.highlighted, false);
     }

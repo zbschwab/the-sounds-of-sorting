@@ -1,6 +1,7 @@
 package edu.grinnell.csc207.soundsofsorting.sorts;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -52,14 +53,18 @@ public class Sorts {
      */
     public static <T extends Comparable<? super T>> List<SortEvent<T>> bubbleSort(T[] arr) {
         List<SortEvent<T>> events = new ArrayList<>();
+        System.out.println("bubbleSort called with arr = " + Arrays.toString(arr));
+        System.out.println("arr length = " + arr.length);
         
         for (int i = 0; i < arr.length - 1; i++) {
             boolean swapped = false;
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 events.add(new CompareEvent<>(j, j+1));
+                System.out.println("Compare_Event");
                 if (arr[j].compareTo(arr[j + 1]) > 0) {
                     swap(arr, j, j + 1);
                     events.add(new SwapEvent<>(j, j+1));
+                    System.out.println("Swap_Event");
                     swapped = true;
                 }
             }
@@ -67,6 +72,7 @@ public class Sorts {
                 break;
             }
         }
+        System.out.println(events);
         return events;
     }
 
